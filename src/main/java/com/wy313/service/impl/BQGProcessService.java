@@ -49,7 +49,7 @@ public class BQGProcessService implements iProcessService {
         TagNode[] elementsByAttValue = rootnode.getElementsByAttValue("class", "nav", true, true);
         TagNode[] ul = elementsByAttValue[0].getChildTags();
         TagNode[] li = ul[0].getChildTags();
-        List<String> menulist=new ArrayList<>();
+        List<String> menulist=new ArrayList<String>();
         for (TagNode tagNode:li ) {
 //            System.out.println(tagNode.getText().toString());
 //            System.out.println(tagNode.getChildTags()[0].getAttributeByName("href"));
@@ -114,7 +114,7 @@ public class BQGProcessService implements iProcessService {
         TagNode listdl = rootnode.getElementsByAttValue("id", "list", true, true)[0];
         TagNode[] dd = listdl.getChildTags()[0].getChildTags();
         boolean status=true;
-        Queue<String> storelist=new LinkedList<>();
+        Queue<String> storelist=new LinkedList<String>();
 
         Connection connection = MysqlStore.connectMysql(LoadProperters.getConfig("db_url"), LoadProperters.getConfig("username"), LoadProperters.getConfig("password"));
         try {
@@ -177,7 +177,7 @@ public class BQGProcessService implements iProcessService {
             return;
         }
 
-        Map<String,String> chapt=new HashMap<>();
+        Map<String,String> chapt=new HashMap<String,String>();
         chapt.put(chaptername,contents);
 
         page.addChapts(chapt);
