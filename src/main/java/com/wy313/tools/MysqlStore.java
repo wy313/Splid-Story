@@ -52,7 +52,8 @@ public class MysqlStore {
         try {
             Statement statement = connection.createStatement();
             //插入小说
-            String sql="insert into store(title,img,url,author,intro,score,newtime) value('"+page.getTitle()+"','"+page.getImage()+"','"+page.getMainurl()+"','"+page.getAuthor()+"','"+page.getIntro()+"','"+page.getScore()+"','"+new Date().getTime()+"')";
+
+            String sql="insert into store(title,img,url,author,intro,score,newtime,typename) value('"+page.getTitle()+"','"+page.getImage()+"','"+page.getMainurl()+"','"+page.getAuthor()+"','"+page.getIntro()+"','"+page.getScore()+"','"+new Date().getTime()+"','"+page.getTypeName()+"')";
             boolean execute = statement.execute(sql);
             return true;
         } catch (SQLException e) {
@@ -103,18 +104,20 @@ public class MysqlStore {
             connection.createStatement().execute("set names utf8");
 
             Statement statement = connection.createStatement();
-            List<Map<String, String>> chapts = page.getChapts();
+            List<Map<Integer,Map<String, String>>> chapts = page.getChapts();
 
             //prepareStatement+addBatch缓存方式
             connection.setAutoCommit(false);
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into chapter(store_id,chap,content,create_time) values(?,?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into chapter(store_id,chap,content,create_time,`order`) values(?,?,?,?,?)");
             int i=0;
-            for(Map<String, String> map :chapts){
+            for(Map<Integer,Map<String, String>> map :chapts){
                 i++;
+                int i1 = Integer.parseInt(map.keySet().toArray()[0].toString());
                 preparedStatement.setInt(1,Integer.parseInt(store));
-                preparedStatement.setString(2,map.keySet().toArray()[0].toString());
-                preparedStatement.setString(3,map.values().toArray()[0].toString());
+                preparedStatement.setString(2,map.get(i1).keySet().toArray()[0].toString());
+                preparedStatement.setString(3,map.get(i1).values().toArray()[0].toString());
                 preparedStatement.setString(4,Long.toString(new Date().getTime()));
+                preparedStatement.setInt(5,i1);
                 preparedStatement.addBatch();
 
                 if(i%100==0){

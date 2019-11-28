@@ -1,9 +1,6 @@
 package com.wy313.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 页面实体类
@@ -33,11 +30,21 @@ public class Page {
     private List<?> menuList;
     //小说分类url
     private List<?> pagelist;
+    //小说章节顺序
+    private  int num;
     //小说目录url
-    private  Queue<String> Storelist;
+    private  Queue<Map<Integer,String>> Storelist;
     //章节内容
-    private List<Map<String,String>> chapts=new ArrayList<>();
+    private List<Map<Integer,Map<String,String>>> chapts=new ArrayList<>();
 
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
 
     public String getMainurl() {
         return mainurl;
@@ -47,31 +54,31 @@ public class Page {
         this.mainurl = mainurl;
     }
 
-    public String pollStorelist(){
+    public Map<Integer,String> pollStorelist(){
         return this.Storelist.poll();
     }
 
-    public void addChapts(  Map<String,String> chap){
+    public void addChapts(  Map<Integer,Map<String,String>>chap){
         this.chapts.add(chap);
     }
 
-    public List<Map<String,String>> getChapts() {
+    public List<Map<Integer,Map<String,String>>> getChapts() {
         return chapts;
     }
 
-    public void setChapts(List<  Map<String,String>> chapts) {
+    public void setChapts(List<  Map<Integer,Map<String,String>>> chapts) {
         this.chapts = chapts;
     }
 
-    public void addStorelist(String lists){
+    public void addStorelist(Map<Integer,String> lists){
         this.Storelist.add(lists);
     }
 
-    public Queue<String> getStorelist() {
+    public Queue<Map<Integer,String>> getStorelist() {
         return Storelist;
     }
 
-    public void setStorelist(Queue<String> storelist) {
+    public void setStorelist(Queue<Map<Integer, String>> storelist) {
         Storelist = storelist;
     }
 

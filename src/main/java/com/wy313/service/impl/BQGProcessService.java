@@ -114,23 +114,27 @@ public class BQGProcessService implements iProcessService {
         TagNode listdl = rootnode.getElementsByAttValue("id", "list", true, true)[0];
         TagNode[] dd = listdl.getChildTags()[0].getChildTags();
         boolean status=true;
-        Queue<String> storelist=new LinkedList<String>();
-
+        Queue<Map<Integer,String>> storelist= new LinkedList<>();
         Connection connection = MysqlStore.connectMysql(LoadProperters.getConfig("db_url"), LoadProperters.getConfig("username"), LoadProperters.getConfig("password"));
         try {
             Statement statement = connection.createStatement();
             String sql="select * from chapter ";
+            int i=0;
             for(TagNode tagNode :dd){
-              //  System.out.println(tagNode.getName());
-                if(tagNode.getName()=="dt"&&status){
+             //System.out.println(tagNode.getName());
+                if("dt".equals(tagNode.getName())&&status){
+                   // System.out.println("first dt");
+                    status=false;
                     continue;
                 }
-                if(tagNode.getName()=="dt"){
+                if("dt".equals(tagNode.getName())){
+                    //System.out.println("two dt");
                     status=true;
                 }
-                if(status==false){
+                if(!status){
                     continue;
                 }
+                i++;
                 TagNode[] da = tagNode.getChildTags();
                 if(da.length>0){
                     String hre=da[0].getAttributeByName("href");
@@ -142,16 +146,21 @@ public class BQGProcessService implements iProcessService {
                             int id=resultSet.getInt("id");
                             ResultSet resultSet1 = statement.executeQuery(sql + "where store_id=" + id + " and chap='" + name + "'");
                             if(!resultSet1.next()){
-                                storelist.add(site+hre);
+                                HashMap<Integer, String> integerStringHashMap = new HashMap<>();
+                              integerStringHashMap.put(i,site+hre);
+                                storelist.add(integerStringHashMap);
+                               // storelist.add(site+hre);
                             }
                         }else{
-                            storelist.add(site+hre);
+                            HashMap<Integer, String> integerStringHashMap = new HashMap<>();
+                            integerStringHashMap.put(i,site+hre);
+                            storelist.add(integerStringHashMap);
+
                         }
 
                     }
                 }
             }
-
             page.setStorelist(storelist);
 
         } catch (SQLException e) {
@@ -173,14 +182,16 @@ public class BQGProcessService implements iProcessService {
         String  contents = rootnode.getElementsByAttValue("id", "content", true, true)[0].getText().toString();
         //System.out.println(content);
         if("正在手打中，请稍等片刻，内容更新后，需要重新刷新页面，才能获取最新更新".equals(content)){
-            page.addStorelist(page.getUrl());
+            HashMap<Integer, String> integerStringHashMap = new HashMap<Integer, String>();
+            integerStringHashMap.put(page.getNum(), page.getUrl());
+            page.addStorelist(integerStringHashMap);
             return;
         }
-
+        Map<Integer,Map<String,String>> chap=new HashMap<>();
         Map<String,String> chapt=new HashMap<String,String>();
         chapt.put(chaptername,contents);
+        chap.put(page.getNum(),chapt);
 
-        page.addChapts(chapt);
-       // System.out.println(page.getConetnt());
+        page.addChapts(chap);
     }
 }

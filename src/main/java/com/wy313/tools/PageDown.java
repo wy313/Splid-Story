@@ -127,7 +127,7 @@ public class PageDown {
             throws Exception {
         SSLContext sslcontext = SSLContexts.custom().loadTrustMaterial(
                         new File(
-                                "D:\\Inteillij项目\\Javaprograme\\Splid-Story\\trust.keystore"),
+                                "trust.keystore"),
                         "123456".toCharArray(), new TrustSelfSignedStrategy())   //文件和密码要对应
                 .build();
         SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(

@@ -84,7 +84,7 @@ public class BQGMain {
 
             }
             try {
-                Thread.sleep(bqgMain.random.nextInt(10000));
+                Thread.sleep(bqgMain.random.nextInt(100));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -97,24 +97,26 @@ public class BQGMain {
         Page   page = getiDownService().down(url);
         page.setMainurl(url);
         getiProcessService().process(page);
-        while (true) {
+     while (true) {
 
-            final String url_start=page.getStorelist().poll();
+            final Map<Integer,String> url_start=page.pollStorelist();
             if (url_start!=null) {
                 Future<?> submit = newfiexThree.submit(new Runnable() {
                     Page p1;
                     @Override
                     public void run() {
-                        System.out.println("线程运行中： " + (url_start));
-                        p1 = getiDownService().down(url_start);
+
+                        System.out.println("线程运行中： " + (url_start.values().toArray()[0].toString()));
+                        p1 = getiDownService().down(url_start.values().toArray()[0].toString());
                         page.setUrl(p1.getUrl());
+                        page.setNum(Integer.parseInt(url_start.keySet().toArray()[0].toString()));
                         page.setConetnt(p1.getConetnt());
 
                         getiProcessService().process(page);
-                        //System.out.println(page.getChapts());
+
                         p1 = null;
                         try {
-                            Thread.sleep(random.nextInt(10000));
+                            Thread.sleep(random.nextInt(100));
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -123,7 +125,7 @@ public class BQGMain {
 //                    ThreadPoolExecutor tpe = ((ThreadPoolExecutor)newfiexThree);
 //                    //判断已经执行完成线程数
 //                    if(tpe.getActiveCount()>2){
-//                        newfiexThree.shutdownNow();
+//                        //newfiexThree.shutdownNow();
 //                        break;
 //                    }
 
@@ -131,7 +133,7 @@ public class BQGMain {
                 ThreadPoolExecutor tpe = ((ThreadPoolExecutor)newfiexThree);
 
                 if(tpe.getActiveCount()==0&& tpe.getQueue().size()==0){
-                    newfiexThree.shutdown();
+                    ///newfiexThree.shutdown();
                     break;
                 }
             }
@@ -144,6 +146,7 @@ public class BQGMain {
 //                if(tpe.getActiveCount()==0){
 //                   break;
 //                }
+//
 //            }
         System.out.println("---------------splid end ---------------");
         return page;
