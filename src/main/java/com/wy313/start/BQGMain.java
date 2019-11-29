@@ -78,7 +78,7 @@ public class BQGMain {
 
             for( HashMap<String, String> j:pagelist){
                 page.setTypeName(j.keySet().toArray()[0].toString());
-                Page repage = bqgMain.splid(j.values().toArray()[0].toString());
+                Page repage = bqgMain.splid(j.keySet().toArray()[0].toString(),j.values().toArray()[0].toString());
 
                 bqgMain.getiStoreService().store(repage);
 
@@ -92,9 +92,10 @@ public class BQGMain {
 
 
     }
-    public Page splid(String url){
+    public Page splid(String typename,String url){
         System.out.println("---------------splid start ---------------");
         Page   page = getiDownService().down(url);
+        page.setTypeName(typename);
         page.setMainurl(url);
         getiProcessService().process(page);
      while (true) {
@@ -111,7 +112,6 @@ public class BQGMain {
                         page.setUrl(p1.getUrl());
                         page.setNum(Integer.parseInt(url_start.keySet().toArray()[0].toString()));
                         page.setConetnt(p1.getConetnt());
-
                         getiProcessService().process(page);
 
                         p1 = null;
@@ -146,7 +146,6 @@ public class BQGMain {
 //                if(tpe.getActiveCount()==0){
 //                   break;
 //                }
-//
 //            }
         System.out.println("---------------splid end ---------------");
         return page;

@@ -3,23 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c847c473-b481-40af-b6df-acfcb008f099" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/123.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wy313/entity/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wy313/entity/Page.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wy313/service/impl/BQGProcessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wy313/service/impl/BQGProcessService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wy313/start/BQGMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wy313/start/BQGMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wy313/tools/MysqlStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wy313/tools/MysqlStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wy313/tools/PageDown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wy313/tools/PageDown.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Splid-Story-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Splid-Story-1.0-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Splid-Story-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Splid-Story-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wy313/entity/Page.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wy313/entity/Page.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wy313/entity/Store.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wy313/service/impl/BQGProcessService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wy313/service/impl/BQGProcessService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/wy313/start/BQGMain$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wy313/start/BQGMain$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/wy313/start/BQGMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wy313/start/BQGMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wy313/tools/MysqlStore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wy313/tools/MysqlStore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wy313/tools/PageDown.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wy313/tools/PageDown.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -210,7 +198,8 @@
       <workItem from="1574865617605" duration="437000" />
       <workItem from="1574868316342" duration="3394000" />
       <workItem from="1574926973466" duration="2129000" />
-      <workItem from="1574929364189" duration="402000" />
+      <workItem from="1574929364189" duration="748000" />
+      <workItem from="1575005946569" duration="1328000" />
     </task>
     <servers />
   </component>
