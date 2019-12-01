@@ -63,10 +63,18 @@ public class BQGMain {
 
         String url= LoadProperters.getConfig("bqgurl");
 //       url="https://www.biqudao.com/bqge_1/";
-//        url="https://www.biqudao.com/bqge31190/";
+//        url="https://www.biqudao.com/bqge178758/";
+//        url="https://www.biqudao.com/bqge66086/";
 //        url="https://www.biqudao.com/bqge31190/1921984.html";
-
-
+//            Page repage=bqgMain.splid("武侠仙侠",url);
+//
+//             bqgMain.getiStoreService().store(repage);
+//
+//        try {
+//            Thread.sleep(10000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         Page page = bqgMain.getiDownService().down(url);
         bqgMain.getiProcessService().process(page);
         List<String> menuList = (List<String>) page.getMenuList();
@@ -79,6 +87,7 @@ public class BQGMain {
             for( HashMap<String, String> j:pagelist){
                 page.setTypeName(j.keySet().toArray()[0].toString());
                 Page repage = bqgMain.splid(j.keySet().toArray()[0].toString(),j.values().toArray()[0].toString());
+//                 repage = bqgMain.splid(j.keySet().toArray()[0].toString(),j.values().toArray()[0].toString());
 
                 bqgMain.getiStoreService().store(repage);
 

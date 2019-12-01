@@ -90,6 +90,7 @@ public class BQGProcessService implements iProcessService {
      * 对应小说页面内容
      */
     private    void info(Page page){
+
         String content=page.getConetnt();
         HtmlCleaner htmlcleaner=new HtmlCleaner();
         TagNode rootnode=htmlcleaner.clean(content);
@@ -120,48 +121,92 @@ public class BQGProcessService implements iProcessService {
             Statement statement = connection.createStatement();
             String sql="select * from chapter ";
             int i=0;
-            for(TagNode tagNode :dd){
-             //System.out.println(tagNode.getName());
-                if("dt".equals(tagNode.getName())&&status){
-                   // System.out.println("first dt");
-                    status=false;
-                    continue;
-                }
-                if("dt".equals(tagNode.getName())){
-                    //System.out.println("two dt");
-                    status=true;
-                }
-                if(!status){
-                    continue;
-                }
-                i++;
-                TagNode[] da = tagNode.getChildTags();
-                if(da.length>0){
-                    String hre=da[0].getAttributeByName("href");
-                    String name=da[0].getText().toString();
-                    if(hre!=null&&hre.length()>0){
-                        //判断是否已经存在数据库中
-                        ResultSet resultSet = statement.executeQuery("select  * from store where title='" + page.getTitle() + "' and author='" + page.getAuthor() + "'");
-                        if(resultSet.next()){
-                            int id=resultSet.getInt("id");
-                            ResultSet resultSet1 = statement.executeQuery(sql + "where store_id=" + id + " and chap='" + name + "'");
-                            if(!resultSet1.next()){
-                                HashMap<Integer, String> integerStringHashMap = new HashMap<>();
-                              integerStringHashMap.put(i,site+hre);
-                                storelist.add(integerStringHashMap);
-                               // storelist.add(site+hre);
-                            }
-                        }else{
-                            HashMap<Integer, String> integerStringHashMap = new HashMap<>();
-                            integerStringHashMap.put(i,site+hre);
-                            storelist.add(integerStringHashMap);
+            //判断是否已经存在数据库中
+            ResultSet resultSet = statement.executeQuery("select  * from store where title='" + page.getTitle() + "' and author='" + page.getAuthor() + "'");
+            if(resultSet.next()){
+                TagNode[] da=null;
+                for(TagNode tagNode :dd) {
+                    if ("dt".equals(tagNode.getName()) && status) {
+                        status = false;
+                        continue;
+                    }
+                    if ("dt".equals(tagNode.getName())) {
 
-                        }
+                        status = true;
+                    }
+                    if (!status) {
+                        continue;
+                    }
 
+                   da = tagNode.getChildTags();
+                   if(da.length>0){
+                       break;
+                   }
+
+                }
+                int j=0;
+                    String hre = da[0].getAttributeByName("href");
+                    String name = da[0].getText().toString();
+                    int id = resultSet.getInt("id");
+                    ResultSet resultSet1 = statement.executeQuery(sql + "where store_id=" + id + " and chap='" + name + "' order by `order` desc limit 1");
+                    if(resultSet1.next()){
+                        j=resultSet1.getInt("order");
+                    }
+                for(TagNode tagNode :dd){
+                    if("dt".equals(tagNode.getName())&&status){
+
+                        status=false;
+                        continue;
+                    }
+                    if("dt".equals(tagNode.getName())){
+
+                        status=true;
+                    }
+                    if(!status){
+                        continue;
+                    }
+                    i++;
+                    if(j<=i){
+                        continue;
+                    }
+                    da = tagNode.getChildTags();
+                    if(da.length>0) {
+                         hre=da[0].getAttributeByName("href");
+                         name=da[0].getText().toString();
+                        HashMap<Integer, String> integerStringHashMap = new HashMap<>();
+                        integerStringHashMap.put(i,site+hre);
+                        storelist.add(integerStringHashMap);
                     }
                 }
+
+            }else{
+                for(TagNode tagNode :dd){
+                    if("dt".equals(tagNode.getName())&&status){
+
+                        status=false;
+                        continue;
+                    }
+                    if("dt".equals(tagNode.getName())){
+
+                        status=true;
+                    }
+                    if(!status){
+                        continue;
+                    }
+                    i++;
+
+                    TagNode[] da = tagNode.getChildTags();
+                    if(da.length>0) {
+                        String hre=da[0].getAttributeByName("href");
+                        String name=da[0].getText().toString();
+                        HashMap<Integer, String> integerStringHashMap = new HashMap<>();
+                        integerStringHashMap.put(i,site+hre);
+                        storelist.add(integerStringHashMap);
+                    }
+                    }
             }
             page.setStorelist(storelist);
+            connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -31,6 +31,7 @@ public class PageDown {
 
     public  static String downinfo(String url){
         String content = null;
+
         try {
             SSLConnectionSocketFactory sslsf = createSSLConnSocketFactory();
             HttpClientBuilder builde = HttpClients.custom().setSSLSocketFactory(sslsf);
@@ -106,10 +107,15 @@ public class PageDown {
         int s = content.indexOf(",\"s\":[");
         int end = content.indexOf("]}");
         String sum=content.substring(t+4,s);
-      //  System.out.println("sum="+sum);
+
         if(Integer.parseInt(sum)>1){
             String ars=content.substring(s+7,end);
            String[] ar = ars.split(",");
+           for(int i=0;i<ar.length;i++){
+               if(ar[i].length()<1){
+                   ar[i]="0";
+               }
+           }
             content.delete(0,content.length());
             double v = (Integer.parseInt(ar[1]) * 2 + Integer.parseInt(ar[1]) * 4 + Integer.parseInt(ar[2]) * 6 + Integer.parseInt(ar[3]) * 8 + Integer.parseInt(ar[4]) * 10) * 1.0 / (Integer.parseInt(sum) - Integer.parseInt(ar[0]));
 
@@ -137,7 +143,7 @@ public class PageDown {
     }
 
     public static void main(String[] args) {
-        Object downinfo = downinfo("https://www.biqudao.com/bqge114445/");
+        Object downinfo = downinfo("https://www.biqudao.com/bqge178758/");
         System.out.println(downinfo);
     }
 
