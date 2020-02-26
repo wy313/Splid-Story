@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c847c473-b481-40af-b6df-acfcb008f099" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Splid-Story.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Splid-Story.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wy313/service/impl/BQGProcessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wy313/service/impl/BQGProcessService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wy313/start/BQGMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wy313/start/BQGMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wy313/tools/PageDown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wy313/tools/PageDown.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +46,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
+        <option name="alwaysUpdateSnapshots" value="true" />
         <option name="mavenHome" value="D:/apache-maven-3.6.2" />
         <option name="userSettingsFile" value="D:\apache-maven-3.6.2\conf\settings.xml" />
         <option name="workOffline" value="true" />
@@ -52,6 +55,7 @@
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
+        <option name="jdkForImporter" value="11" />
         <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
@@ -64,12 +68,17 @@
   </component>
   <component name="ProjectId" id="1U3WQre9iNw9Zg5IqayQy1tTeCB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -77,10 +86,10 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -90,19 +99,8 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean" />
+      <command value="mvn clear" />
       <command value="mvn package assembly:single" />
-    </option>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
     </option>
   </component>
   <component name="RunManager" selected="Application.BQGMain (1)">
@@ -167,6 +165,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -198,7 +208,14 @@
       <workItem from="1574926973466" duration="2129000" />
       <workItem from="1574929364189" duration="748000" />
       <workItem from="1575005946569" duration="1373000" />
-      <workItem from="1575204359977" duration="7490000" />
+      <workItem from="1575204359977" duration="7754000" />
+      <workItem from="1575213899216" duration="40000" />
+      <workItem from="1575290433744" duration="13000" />
+      <workItem from="1575530920802" duration="4744000" />
+      <workItem from="1575535716604" duration="189000" />
+      <workItem from="1575544522541" duration="17000" />
+      <workItem from="1579662566852" duration="360000" />
+      <workItem from="1582715598290" duration="870000" />
     </task>
     <servers />
   </component>
@@ -221,5 +238,39 @@
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
     <proxy>https://mirrors.aliyun.com/goproxy/</proxy>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575534790145">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1575534790145" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1575534909811">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1575534909811" />
+    <state width="1493" height="207" key="GridCell.Tab.0.bottom" timestamp="1575535906371">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="207" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575535906371" />
+    <state width="1493" height="207" key="GridCell.Tab.0.center" timestamp="1575535906371">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="207" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575535906371" />
+    <state width="1493" height="207" key="GridCell.Tab.0.left" timestamp="1575535906371">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="207" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575535906371" />
+    <state width="1493" height="207" key="GridCell.Tab.0.right" timestamp="1575535906371">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="207" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575535906371" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1575535580874">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575535580874" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1575535839603">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1575535839603" />
   </component>
 </project>

@@ -63,10 +63,11 @@ public class BQGMain {
 
         String url= LoadProperters.getConfig("bqgurl");
 //       url="https://www.biqudao.com/bqge_1/";
-//        url="https://www.biqudao.com/bqge178758/";
+//        url="https://www.biqudao.com/bqge62/";
+//        url="https://www.biqudao.com/bqge131893/";
 //        url="https://www.biqudao.com/bqge66086/";
 //        url="https://www.biqudao.com/bqge31190/1921984.html";
-//            Page repage=bqgMain.splid("武侠仙侠",url);
+//            Page repage=bqgMain.splid("网游竞技",url);
 //
 //             bqgMain.getiStoreService().store(repage);
 //
@@ -79,6 +80,7 @@ public class BQGMain {
         bqgMain.getiProcessService().process(page);
         List<String> menuList = (List<String>) page.getMenuList();
         page=null;
+       // System.out.println(menuList);
         for(String  i:menuList){
             page=bqgMain.getiDownService().down(i);
             bqgMain.getiProcessService().process(page);
@@ -107,6 +109,7 @@ public class BQGMain {
         page.setTypeName(typename);
         page.setMainurl(url);
         getiProcessService().process(page);
+        //System.out.println(page.getStorelist());
      while (true) {
 
             final Map<Integer,String> url_start=page.pollStorelist();
@@ -133,7 +136,7 @@ public class BQGMain {
                 });
 //                    ThreadPoolExecutor tpe = ((ThreadPoolExecutor)newfiexThree);
 //                    //判断已经执行完成线程数
-//                    if(tpe.getActiveCount()>2){
+//                    if(tpe.getActiveCount()>1){
 //                        //newfiexThree.shutdownNow();
 //                        break;
 //                    }

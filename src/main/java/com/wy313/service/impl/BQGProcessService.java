@@ -21,17 +21,18 @@ public class BQGProcessService implements iProcessService {
         if(page.getUrl()==null ){
          return;
         }
-      //  System.out.println(page.getUrl().length());
+       // System.out.println(page.getUrl().length());
         //解析页面顶部分类url
         if("https://www.biqudao.com".equals(page.getUrl())){
             titleBananer(page);
         }
         //分类页面解析
-        else if(page.getUrl().length()<32){
+        else if(page.getUrl().length()<32&&page.getUrl().indexOf("_")>0){
             typeurl(page);
         }
         //对应小说页面解析
         else if(page.getUrl().length()<40&&page.getUrl().endsWith("/")){
+
             info(page);
         }else{
             chapter(page);
@@ -54,9 +55,11 @@ public class BQGProcessService implements iProcessService {
 //            System.out.println(tagNode.getText().toString());
 //            System.out.println(tagNode.getChildTags()[0].getAttributeByName("href"));
            String href= tagNode.getChildTags()[0].getAttributeByName("href");
-            if(href!=null&&href.length()>2&&href.startsWith("/")&&href.endsWith("/")){
+
+            if(href!=null&&href.length()>2&&href.startsWith("/")&&href.endsWith("/")&&href.lastIndexOf("_")==5){
                 menulist.add(site+href);
             }
+
         }
        page.setMenuList(menulist);
 
@@ -68,13 +71,22 @@ public class BQGProcessService implements iProcessService {
     private    void typeurl(Page page){
        // System.out.println("https://www.biqudao.com/bqge31190/");
         String content=page.getConetnt();
+
         HtmlCleaner htmlcleaner=new HtmlCleaner();
         TagNode rootnode=htmlcleaner.clean(content);
+        //System.out.println(page.getConetnt());
+       if(rootnode.getElementsByAttValue("class", "r", true, true).length==0){
+           return;
+       }
         TagNode[] li = rootnode.getElementsByAttValue("class", "r", true, true)[0].getChildTags()[1].getChildTags();
+
         String storytype=li[0].getChildTags()[0].getText().toString();
         storytype = storytype.split("\\[")[1].split("\\]")[0];
         //List<String> storelist=new ArrayList<>();
         List<Map<String,String>> storelist=new ArrayList<Map<String,String>>();
+        if("穿越时空".equals(storytype)){
+            storytype="女频频道";
+        }
 
         for (TagNode tagNode:li     ) {
             String href=tagNode.getChildTags()[1].getChildTags()[0].getAttributeByName("href");
@@ -83,7 +95,7 @@ public class BQGProcessService implements iProcessService {
             storelist.add(stringStringHashMap);
 
         }
-       // System.out.println(storelist);
+      //  System.out.println(storelist);
       page.setPagelist(storelist);
     }
     /**
@@ -205,6 +217,7 @@ public class BQGProcessService implements iProcessService {
                     }
                     }
             }
+
             page.setStorelist(storelist);
             connection.close();
 
